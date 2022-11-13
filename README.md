@@ -47,8 +47,8 @@
 
 ### Built With
 
-* [![VS Code API]][vscodeapi-url]
-* [![Yeoman]][yeoman]
+* [VS Code API](https://code.visualstudio.com/api/references/vscode-api)
+* [Yeoman](https://yeoman.io/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,5 +108,3 @@ Project Link: [https://github.com/Scara_96/deployz](https://github.com/Scara_96/
 [issues-url]: https://github.com/Scara_96/deployz/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/jacopo-scaravaggi-62aaa5112/
-[vscodeapi-url]: https://code.visualstudio.com/api/references/vscode-api
-[yeoman]: https://yeoman.io/
