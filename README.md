@@ -47,8 +47,8 @@
 
 ### Built With
 
-* [![VS Code API][VS Code API]][vscodeapi-url]
-* [![Yeoman][Yeoman]][yeoman]
+* [![VS Code API]][vscodeapi-url]
+* [![Yeoman]][yeoman]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -88,7 +88,7 @@ If you want to force the file generation you can use the "Deployz - Generate Fil
 <!-- CONTACT -->
 ## Contact
 
-Jacopo - [@instagram](https://www.instagram.com/scara_96/) - scaravaggi@hotmail.it
+Jacopo - [Instagram](https://www.instagram.com/scara_96/) - scaravaggi@hotmail.it
 
 Project Link: [https://github.com/Scara_96/deployz](https://github.com/Scara_96/deployz)
 
@@ -106,10 +106,7 @@ Project Link: [https://github.com/Scara_96/deployz](https://github.com/Scara_96/
 [stars-url]: https://github.com/Scara_96/deployz/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Scara_96/deployz.svg?style=for-the-badge
 [issues-url]: https://github.com/Scara_96/deployz/issues
-[license-shield]: https://img.shields.io/github/license/Scara_96/deployz.svg?style=for-the-badge
-[license-url]: https://github.com/Scara_96/deployz/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[linkedin-url]: https://www.linkedin.com/in/jacopo-scaravaggi-62aaa5112/
 [vscodeapi-url]: https://code.visualstudio.com/api/references/vscode-api
 [yeoman]: https://yeoman.io/
