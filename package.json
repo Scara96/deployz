@@ -24,8 +24,8 @@
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "deployz.listen",
-      "title": "Start Listen"
+      "command": "deployz.generateFile",
+      "title": "Deployz - Generate File"
     }]
   },
   "scripts": {

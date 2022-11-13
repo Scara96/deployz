@@ -24,7 +24,13 @@ const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
 
-const _todayString = dd + '-' + mm + '-' + yyyy;
+//Constants
+const _TODAY_STRING = dd + '-' + mm + '-' + yyyy;
+const _GENERATE_FILE_COMMAND = 'deployz.generateFile';
+const _FILE_NAME = 'changes_for_deploy';
+const _FILE_EXTENSION = '.txt';
+const _FILE_HEADER = '--- Changes for deploy ---' + _TODAY_STRING + '\n\n';
+const _WELCOME_MESSAGE = 'Welcome! DeployZ is now activated.';
 
 /**
 * Create a custom Uri for creating folder or file
@@ -62,7 +68,7 @@ function stringifyFileList(header, fileList, contentToReturn){
 */
 function createFileContent(_modifiedFiles) {
 
-	let contentToReturn = 'MODIFIED FILE LIST ' + _todayString + '\n\n';
+	let contentToReturn = _FILE_HEADER;
 	
 	if(_modifiedFiles){
 		//Concat Apex Classes Names
@@ -129,7 +135,7 @@ function addFileToList(currentFile, fileList) {
 function saveFile(fileContent) {
 	
 	let myWorkSpaceEdit = new vscode.WorkspaceEdit();
-	let myUri = getPath(_todayString + '/changes_for_deploy.txt');
+	let myUri = getPath(_TODAY_STRING + '/' + _FILE_NAME + _FILE_EXTENSION);
 
 	myWorkSpaceEdit.createFile(myUri, {overwrite: true});
 	myWorkSpaceEdit.set(myUri, [new vscode.TextEdit(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(100, 100)), fileContent)]);	
@@ -141,14 +147,16 @@ function saveFile(fileContent) {
 * Create a directory to store modified files informations
 */
 function createDirectory() {		
-	vscode.workspace.fs.createDirectory(getPath(_todayString));	
+	vscode.workspace.fs.createDirectory(getPath(_TODAY_STRING));	
 }
 
 /**
-* Listener on file save
+* Main function that starts all the extension' logic
+*
+* PARAMETERS
+* event: event on save file
 */
-vscode.workspace.onWillSaveTextDocument(event => {
-	
+function generateFile(event) {		
 	let splittedPath = event.document.fileName.split('\\');
 	let splittedName = splittedPath[splittedPath.length - 1].split('.');
 
@@ -156,7 +164,7 @@ vscode.workspace.onWillSaveTextDocument(event => {
 	currentFile.name = splittedName[0];
 	currentFile.extension = splittedName[1];
 
-	if(currentFile.name == 'changes_for_deploy') return;
+	if(currentFile.name == _FILE_NAME) return;
 
 	if(currentFile.extension == 'cls'){
 		//Apex Class
@@ -202,13 +210,29 @@ vscode.workspace.onWillSaveTextDocument(event => {
 	let fileContent = createFileContent(_modifiedFiles);
 
 	saveFile(fileContent);
+}
+
+/**
+* Listener on file save
+*/
+vscode.workspace.onWillSaveTextDocument(event => {
+	generateFile(event);
 });
+
+/**
+* Command Generate File
+*/
+const handleGenerateFile = () => {
+	let fileContent = createFileContent(_modifiedFiles);
+	saveFile(fileContent);
+};
 
 /**
 * Function fired on extension activation
 */
-function activate() {
-	vscode.window.showInformationMessage('Welcome! DeployZ is now activated.');
+function activate(context) {
+	vscode.window.showInformationMessage(_WELCOME_MESSAGE);
+	context.subscriptions.push(vscode.commands.registerCommand(_GENERATE_FILE_COMMAND, handleGenerateFile));
 	createDirectory();
 }
 
